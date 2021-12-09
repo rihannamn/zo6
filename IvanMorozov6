@@ -1,0 +1,69 @@
+using System;
+using concolseT_6;
+ 
+namespace concolseT_6_1
+{
+   class Program
+   {
+       static void Main(string[] args)
+       {
+           try
+           {
+               Console.Write("Введите размер одномерного массива: ");
+               int N = int.Parse(Console.ReadLine());
+               Console.Write("Введите количество строк в двумерном массиве: ");
+               int n = int.Parse(Console.ReadLine());
+               Console.Write("Введите количество столбцов в двумерном массиве: ");
+               int k = int.Parse(Console.ReadLine());
+               Task1 t = new Task1(N, n, k);
+               Console.WriteLine("Одномерный массив: {0}", t.ShowArr());                
+               Console.WriteLine("Двумерный массив:\n{0}", t.Show2mArr());
+               Console.WriteLine("Произведение элементов одномерного массива: {0}", t.ArrMultiple);
+               Console.Write("Оно трехзначное?");
+               if (t.ThreeZnachForArr) Console.WriteLine(" - Да");
+               else Console.WriteLine(" - Нет");
+               Console.WriteLine("Произведение элементов двумерного массива: {0}", t.Arr2Multiple);
+               Console.Write("Оно трехзначное?");
+               if (t.ThreeZnachForArr2) Console.WriteLine(" - Да");
+               else Console.WriteLine(" - Нет");
+           }
+           catch(System.FormatException)
+           {
+               Console.WriteLine("Ввели что-то не то");
+           }
+       }
+   }
+}
+ 
+using System;
+using System.Collections.Generic;
+using System.Text;
+ 
+namespace consoleT_6
+{
+   class Task2
+   {
+       double [] arr;
+       public Task2(string str)
+       {            
+           string[] str2 = str.Split(' ');
+           arr = new double[str2.Length];
+           for (int i =0; i < str2.Length; i++)
+           {
+               arr[i] = Double.Parse(str2[i]);
+           }
+       }
+       public int Count(double a)
+       {
+           int count = 0;
+           for (int i=0; i<arr.Length-1; i++)
+           {
+               if (Math.Abs(arr[i] - arr[i + 1]) == a)
+               {
+                   count++;
+               }
+           }
+           return count;
+       }
+   }
+}
